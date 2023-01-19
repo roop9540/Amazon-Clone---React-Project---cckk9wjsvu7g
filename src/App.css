@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400;1,400;1,500&display=swap");
+
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Besley", serif;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  list-style: none;
+  scroll-behavior: smooth;
+}
+
+*::selection{
+  background: #f10000;
+  color: #000;
+}
+::-webkit-scrollbar-thumb{
+  background: #f10000;
+}
+::-webkit-scrollbar-track{
+  background: #000;
+}
