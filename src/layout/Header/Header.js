@@ -107,7 +107,7 @@ function Header() {
     </div>
     <div className='headerOptions' >
                     <span className='headerOption_One'>Delivery To </span>
-                    <span className='headerOption_Two'>Easy Coding</span>
+                    {/* <span className='headerOption_Two'>Easy Coding</span> */}
                 </div>
     
 </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { remove } from '../store/cartSlice';
+import { remove, removeAll } from '../store/cartSlice';
 import { Link } from 'react-router-dom';
 import './Cart.css';
 import Header from '../layout/Header/Header';
@@ -16,6 +16,12 @@ function Cart() {
 
     function handleRemove(id) {
         dispatch(remove(id))
+    }
+    function handleRemoveAll(product) {
+        console.log(product)
+        // console.log("removedall")
+        dispatch(removeAll(product))
+        //   dispatch ({type: 'cart/removeAll', payload: product} )
     }
     {
         products.map((product, id) => {
@@ -43,40 +49,41 @@ function Cart() {
 
 
                 <h1 className='cartItems'>Cart Items</h1>
+                <button type='button' className='Removeall' onClick={handleRemoveAll} >Remove All</button>
 
                 <div className='productsWrapper'>
-                    { uniqueArr.map((item, id)=>{
+                    {uniqueArr.map((item, id) => {
                         console.log(item.id, item.title)
-                    return (
+                        return (
 
-                    <div className="Products" key={id}>
+                            <div className="Products" key={id}>
 
-                        {/* {console.log(id)}
+                                {/* {console.log(id)}
                         {console.log(uniqueArr)} */}
-                        <img src={item.image} />
+                                <img src={item.image} />
 
-                        <div className='ProductInformation' >
-                            <Link to={`Checkout/${item.id} `} >
-                                <h4>{item.title}</h4>
+                                <div className='ProductInformation' >
+                                    <Link to={`Checkout/${item.id} `} >
+                                        <h4>{item.title}</h4>
 
-                                {/* <p>{product.description}</p> */}
-                                <div className='ProdcutsGroup'  >
-                                    <p className='ProductPrice' >
-                                        <small>$</small>
-                                        <strong >{item.price * count}</strong>
-                                    </p>
-                                    {/* For the rating*/}
-                                    <div className='ProductRating' >
-                                        <p>{item.rating.rate}/5.0</p>
-                                    </div>
-                                    <p>{item.category}</p>
+                                        {/* <p>{product.description}</p> */}
+                                        <div className='ProdcutsGroup'  >
+                                            <p className='ProductPrice' >
+                                                <small>$</small>
+                                                <strong >{item.price * count}</strong>
+                                            </p>
+                                            {/* For the rating*/}
+                                            <div className='ProductRating' >
+                                                <p>{item.rating.rate}/5.0</p>
+                                            </div>
+                                            <p>{item.category}</p>
+                                        </div>
+                                    </Link>
                                 </div>
-                            </Link>
-                        </div>
-                        <button className='btn' onClick={() => handleRemove(item.id)} >Remove</button>
-                    </div>
-                    )
-                })}
+                                <button className='btn' onClick={() => handleRemove(item.id)} >Remove</button>
+                            </div>
+                        )
+                    })}
 
                 </div>
             </div>
@@ -84,4 +91,4 @@ function Cart() {
     }
 }
 
-    export default Cart;
+export default Cart;
